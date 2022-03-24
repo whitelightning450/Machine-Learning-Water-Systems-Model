@@ -17,11 +17,13 @@ We find that machine learning demonstrates high potential for further developmen
 
 ### About the Salt Lake City Machine Learning Water System Model
 
-This ML-WSM leverages decades of collaborate water systems modeling development between the University of Utah, the University of Alabama, and the Salt Lake Department of Public Utilities (SLCDPU), leveraging an existing documented and calibrated systems dynamics model built in the Goldsim software package for machine learning model training and testing.
+This ML-WSM leverages decades of collaborate water systems modeling development between the University of Utah, the University of Alabama, and the Salt Lake Department of Public Utilities (SLCDPU), leveraging an existing documented and calibrated systems dynamics model (Salt Lake City Water Systems Model, SLC-WSM) built in the Goldsim software package for machine learning model training and testing.
 This model serves as a template for other water systems with or without an existing systems dynamic water systems model to adapt and create a machine learning water systems model tailored to their unique system interactions and feedbacks. 
 
 ### Brief Salt Lake City water system background
 ![studyArea](https://user-images.githubusercontent.com/33735397/159961402-7a06a9fd-d275-4cb0-bb13-6f6b722a3860.PNG)
+**Study Area**: Salt Lake City depends on winter snowpack in the adjacent Wasatch mountains to support surface water supplies, fill the Dell reservoir storage system, and replenish valley aquifers.
+Its mountainous topography, geographical location, and arid climate result in highly skewed April to October water use to counteract seasonally high evapotranspiration for out outdoor landscaping and irrigation.
 
 The SLCDPU shares many similarities with western and intermountain water utilities in growing metropolitan areas.
 The region's interannual climate variability and seasonality strongly influence winter snowpack accumulation, extent, and duration, functioning as the primary mechanism controlling surface water supplies.
@@ -38,5 +40,36 @@ This water comes at a greater cost, resulting in it being the least prioritized 
 
 
 ![SLC_WS_schematic](https://user-images.githubusercontent.com/33735397/159962157-b7ef6a33-e758-4d9b-924c-a266f17c0b0e.PNG)
+**Water System:** Salt Lake City's water system leverages adjacent Wasatch Mountain surface water supplies, small reservoirs (Dell system), groundwater withdrawal, minimal in-system storage, and access to larger U.S. Bureau of Reclamation reservoir systems. 
+
+### Machine Learning Model Inputs and Training
+Many of the SLC-WSM inputs drive the XGB-WSM, including daily surface water supplies (e.g., City Creek), total system demand, service area population, reservoir levels, and the previous time step's reservoir levels, groundwater extraction rate, and out-of-district requests.
+For example, the reservoir level on July 1st functions as an input to predict the reservoir level on July 2nd.
+This research developed three additional metrics to further enhance model performance: total daily surface water supplies, day of the year, and month.
+For model training we source streamflow and demand data from the utility's long-term records, the Kem C. Gardner Policy Institute provides population data, SLC-WSM simulations provide groundwater extraction rates, out-of-district Deer Creek reservoir use, and Mountain Dell and Little Dell reservoir levels.
+Streamflow values entering water treatment facilities at each canyon's mouth for model inputs as well as demand data conisting of the total volume of water entering the distribution system (all connected demands, leaks, and unaccounted-for losses).
+
+For model demand predictions, the ML-based Climate-Supply-Development water demand model (CSD-WDM, https://github.com/whitelightning450/Water-Demand-Forecasting) predicts mean monthly demands in response to climate, supply, and socioeconomic factors. 
+The CSD-WDM demonstrates high seasonal prediction accuracy with a mean absolute error of 62.8 lpcd and a mean absolute percent error  8.4%.
+Since XGB-WSM operates at a daily time step, cubic spline interpolation downscales the demand predictions to a daily temporal resolution of total system water demand.
+
+The XGB-WSM uses these features to predict daily Mountain and Little Dell reservoir level, system groundwater extraction rate, and out-of-district Deer Creek reservoir requests during peak SLCDPU water use between April and October.
+Model training is on seventeen years of daily simulation data spanning from 2000 to 2020, omitting the three testing scenarios described below.
+
+### Evaluation Scenarios
+XGB-WSM predictive performance is on three different scenarios, based on annual snowpack, to represent the intermountain regions' hydroclimate variability.
+The Alta Guard MesoWest weather station in the headwaters of Little Cottonwood Creek provides a long-term (1945-present) snowfall record to identify the most recent dry (2015), average (2017), and wet (2008) conditions for XGB-WSM simulation evaluation.
+A Log-Pearson Type III analysis indicates the dry year demonstrates a non-exceedance return interval greater than 200 years and the wet year with an exceedance probability of 50 years.
+These three water years establish the foundation of the testing scenarios by defining supply availability with the streamflow quantities at the canyon mouths and the corresponding observed per-capita water use.
+Other system factors such as population, conservation, policy, and initial reservoir levels remain constant between scenarios.
+
+# Using the XGB-WSM
+
+
+
+
+
+
+
 
 
