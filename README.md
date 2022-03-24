@@ -18,7 +18,7 @@ We examine the XGBoost water systems model (XGB-WSM) forecasting accuracy during
 The XGB-WSM accurately models seasonal reservoir level dynamics, groundwater extraction rates, and out-of-district requests during the dry and average climate scenarios with a low RMSE and high R<sup>2</sup> (>0.91).
 The model accurately predicted all water system components for all hydroclimate scnearios, correctly demonstrating the seasonal trends and relationships to water system component thresholds.
 We find that machine learning demonstrates high potential for further development and integration in water resources planning and management, such as identifying and optimizing system operations, increasing community engagement, and strengthening the understanding of the water system for utilities without an existing systems model. 
-
+ 
 
 ### About the Salt Lake City Machine Learning Water System Model
 
