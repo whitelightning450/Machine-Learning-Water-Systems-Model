@@ -1,3 +1,6 @@
+
+![ML_WSM_Github](https://user-images.githubusercontent.com/33735397/159956101-71874623-1189-48dd-8774-102a9be4964c.png)
+
 # Machine-Learning-Water-Systems-Model
 This machine learning workflow demonstrates a framework to function a digital twin of a systems dynamics model for urban water system seasonal water system reliability, resilience, and vulnerability analysis.
 
