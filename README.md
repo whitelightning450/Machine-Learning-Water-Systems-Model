@@ -11,7 +11,7 @@ Systems dynamics modeling can replicate the physical processes to evaluate syste
 To address these challenges, this study utilizes the Xtreme Gradient Boost (XGBoost) algorithm, automated feature selection, and automated hyper-parameter optimization as a novel machine learning framework to predict daily reservoir levels, groundwater extraction rates, and out-of-district water requests for determining each their RRV.
 We examine the XGBoost water systems model (XGB-WSM) forecasting accuracy during dry, average, and wet climate scenarios compared with a water systems model developed to assess Salt Lake City's water system vulnerability to climate and population growth.
 The XGB-WSM accurately models seasonal reservoir level dynamics, groundwater extraction rates, and out-of-district requests during the dry and average climate scenarios with a low RMSE and high R<sup>2</sup> (>0.91).
-Wet climate conditions challenged the model; however, the seasonal trends and relationships to water system component thresholds mirrored the observed.
+The model accurately predicted all water system components for all hydroclimate scnearios, correctly demonstrating the seasonal trends and relationships to water system component thresholds.
 We find that machine learning demonstrates high potential for further development and integration in water resources planning and management, such as identifying and optimizing system operations, increasing community engagement, and strengthening the understanding of the water system for utilities without an existing systems model. 
 
 
@@ -23,8 +23,8 @@ This model serves as a template for other water systems with or without an exist
 ### Brief Salt Lake City water system background
 ![studyArea](https://user-images.githubusercontent.com/33735397/159961402-7a06a9fd-d275-4cb0-bb13-6f6b722a3860.PNG)
 
-**Study Area**: Salt Lake City depends on winter snowpack in the adjacent Wasatch mountains to support surface water supplies, fill the Dell reservoir storage system, and replenish valley aquifers.
-Its mountainous topography, geographical location, and arid climate result in highly skewed April to October water use to counteract seasonally high evapotranspiration for out outdoor landscaping and irrigation.
+**Study Area**: Salt Lake City, Utah depends on winter snowpack in the adjacent Wasatch mountains to support surface water supplies, fill the Dell reservoir storage system, and replenish valley aquifers.
+Its mountainous topography, geographical location, and arid climate result in highly skewed April to October water use to counteract seasonally high evapotranspiration for outdoor landscaping and irrigation.
 
 The SLCDPU shares many similarities with western and intermountain water utilities in growing metropolitan areas.
 The region's interannual climate variability and seasonality strongly influence winter snowpack accumulation, extent, and duration, functioning as the primary mechanism controlling surface water supplies.
@@ -37,19 +37,19 @@ From the Wasatch mountains, City creek, Parley's creek, Big Cottonwood creek, an
 The Parley's watershed contains Mountain Dell reservoir and Little Dell reservoir that hold up to 3.2x10<sup>6</sup> m<sup>3</sup> and 25x10<sup>6</sup>  m<sup>3</sup>, respectively, and are the only utility owned long-term storage sources.
 When surface water supplies cannot meet demand during the summer months, SLCDPU has access up to 22x10<sup>6</sup> m^3</sup> per year of groundwater.
 If surface and groundwater supplies cannot satisfy demands, out-of-district Deer Creek reservoir and CUP sources support up to 61x10<sup>6</sup> m<sup>3</sup> per year of use.
-This water comes at a greater cost, resulting in it being the least prioritized supply source and for purposes of RRV metrics in this study, these out-of-district requests are considered a reliability failure for the SLCDPU water system.
+This water comes at a greater cost, resulting in it being the least prioritized supply source, and for purposes of RRV metrics in this study,  considered a reliability failure for the water system.
 
 
 ![SLC_WS_schematic](https://user-images.githubusercontent.com/33735397/159962157-b7ef6a33-e758-4d9b-924c-a266f17c0b0e.PNG)
 
-**Water System:** Salt Lake City's water system leverages adjacent Wasatch Mountain surface water supplies, small reservoirs (Dell system), groundwater withdrawal, minimal in-system storage, and access to larger U.S. Bureau of Reclamation reservoir systems. 
+**Water System:** Salt Lake City water system leverages adjacent Wasatch Mountain surface water supplies, small reservoirs (Dell system), groundwater withdrawal, minimal in-system storage, and access to larger U.S. Bureau of Reclamation reservoir systems. 
 
 ### Machine Learning Model Inputs and Training
 Many of the SLC-WSM inputs drive the XGB-WSM, including daily surface water supplies (e.g., City Creek), total system demand, service area population, reservoir levels, and the previous time step's reservoir levels, groundwater extraction rate, and out-of-district requests.
 For example, the reservoir level on July 1<sup>st</sup> functions as an input to predict the reservoir level on July 2<sup>nd</sup>.
 This research developed three additional metrics to further enhance model performance: total daily surface water supplies, day of the year, and month.
 For model training we source streamflow and demand data from the utility's long-term records, the Kem C. Gardner Policy Institute provides population data, SLC-WSM simulations provide groundwater extraction rates, out-of-district Deer Creek reservoir use, and Mountain Dell and Little Dell reservoir levels.
-Streamflow values entering water treatment facilities at each canyon's mouth for model inputs as well as demand data conisting of the total volume of water entering the distribution system (all connected demands, leaks, and unaccounted-for losses).
+Streamflow values entering water treatment facilities at each canyon's mouth form model inputs, as well as demand data conisting of the total volume of water entering the distribution system (all connected demands, leaks, and unaccounted-for losses).
 
 For model demand predictions, the ML-based Climate-Supply-Development water demand model (CSD-WDM, https://github.com/whitelightning450/Water-Demand-Forecasting) predicts mean monthly demands in response to climate, supply, and socioeconomic factors. 
 The CSD-WDM demonstrates high seasonal prediction accuracy with a mean absolute error of 62.8 lpcd and a mean absolute percent error  8.4%.
@@ -95,7 +95,7 @@ Setting up the XGB-WSM uses the XGB_Model_v3_uncertainty.py module and imports a
 This module takes in the reservoir threholds, desired units, prediction inputs, hydroclimate scenario, the evaluation timeframe, directory link, and asks if any figures should be saved. 
 
 Before XGB-WSM makes predictions, the input data must be processed into the required format via the ProcessData class. 
-During this step, changes observations to True or False depending on the desired output. 
+During this step, change observations to True or False depending on the desired output. 
 Choose False if making a forecast or choose True if validating the model and want to evaluate model performance. 
 
 ![DataProcessing](https://user-images.githubusercontent.com/33735397/159974043-529144fc-314f-4b43-88d4-ec65d5f6cd7b.PNG)
@@ -111,15 +111,15 @@ For this system, the total volume of groundwater and out-of-district (Deer Creek
 
 **XGB-WSM Prediction w/Observations** Using average hydroclimate conditions as an example, the model illustrates water system performance for each key component with an April to October hydrograph of use or level.
 The prediction is the blue line with the uncertainty (to a 95% confidence level) surounding this line in the lighter shade. 
-The plots to the right communicate RRV, usign the metrics of reliabiity, vulnerability, and max severity.
-The model color codes satisfactory (green) and unsatisfactory (red) conditions in relation to the indicated threshold (reservoirs) or historical water use (groundwater and out-of-district) for easy communication concering the timing of component conditions. 
+The plots to the right communicate RRV, using the metrics of reliabiity, vulnerability, and max severity.
+The model color codes satisfactory (green) and unsatisfactory (red) conditions in relation to the indicated threshold (reservoirs) or historical water use (groundwater and out-of-district) for easy communication concerning the timing of component conditions. 
 This figure has observations set to True, demonstrated by the parity plot illustrating model performance. 
 
 
 ![Mod_Ave_obs_False_Analysis](https://user-images.githubusercontent.com/33735397/159975865-9e5e9f51-bde7-4928-8ac1-8eaed1fb875f.png)
 
-**XGB-WSM Prediction w/o Observations** This figure is for the same average hydroclimate conditions as above but run in forecasting mode without observations. 
-Future development of the XGB-WSM will biuld on this platform to generate predictions for an array of hydrocliate influenced water system conditions.
+**XGB-WSM Prediction w/o Observations** This figure is for the same average hydroclimate conditions as above, but run in forecasting mode without observations. 
+Future development of the XGB-WSM will build on this platform to generate predictions for an array of hydroclimate influenced water system conditions.
 
 
 
