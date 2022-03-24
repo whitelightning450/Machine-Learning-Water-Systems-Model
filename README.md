@@ -33,9 +33,9 @@ While a supply limited region, high seasonal water use places Utah as the 2nd or
 
 The utility satisfies its demands by sourcing adjacent Wasatch mountain surface water, underlying valley groundwater, and nearby Deer Creek reservoir and Central Utah Project (CUP) out-of-district supplies.
 From the Wasatch mountains, City creek, Parley's creek, Big Cottonwood creek, and Little Cottonwood creek contribute over 60% of the municipality's annual supply.
-The Parley's watershed contains Mountain Dell reservoir and Little Dell reservoir that hold up to 3.2x10^6 m^3 and 25x10^6  m^3, respectively, and are the only utility owned long-term storage sources.
-When surface water supplies cannot meet demand during the summer months, SLCDPU has access up to 22x10^6 m^3 per year of groundwater.
-If surface and groundwater supplies cannot satisfy demands, out-of-district Deer Creek reservoir and CUP sources support up to 61x10^6 m^3 per year of use.
+The Parley's watershed contains Mountain Dell reservoir and Little Dell reservoir that hold up to 3.2x10<sup>6</sup> m<sup>3</sup> and 25x10<sup>6</sup>  m<sup>3</sup>, respectively, and are the only utility owned long-term storage sources.
+When surface water supplies cannot meet demand during the summer months, SLCDPU has access up to 22x10<sup>6</sup> m^3</sup> per year of groundwater.
+If surface and groundwater supplies cannot satisfy demands, out-of-district Deer Creek reservoir and CUP sources support up to 61x10<sup>6</sup> m<sup>3</sup> per year of use.
 This water comes at a greater cost, resulting in it being the least prioritized supply source and for purposes of RRV metrics in this study, these out-of-district requests are considered a reliability failure for the SLCDPU water system.
 
 
@@ -45,7 +45,7 @@ This water comes at a greater cost, resulting in it being the least prioritized 
 
 ### Machine Learning Model Inputs and Training
 Many of the SLC-WSM inputs drive the XGB-WSM, including daily surface water supplies (e.g., City Creek), total system demand, service area population, reservoir levels, and the previous time step's reservoir levels, groundwater extraction rate, and out-of-district requests.
-For example, the reservoir level on July 1st functions as an input to predict the reservoir level on July 2nd.
+For example, the reservoir level on July 1<sup>st</sup> functions as an input to predict the reservoir level on July 2<sup>nd</sup>.
 This research developed three additional metrics to further enhance model performance: total daily surface water supplies, day of the year, and month.
 For model training we source streamflow and demand data from the utility's long-term records, the Kem C. Gardner Policy Institute provides population data, SLC-WSM simulations provide groundwater extraction rates, out-of-district Deer Creek reservoir use, and Mountain Dell and Little Dell reservoir levels.
 Streamflow values entering water treatment facilities at each canyon's mouth for model inputs as well as demand data conisting of the total volume of water entering the distribution system (all connected demands, leaks, and unaccounted-for losses).
@@ -84,7 +84,7 @@ Python: Version 3.8 or later
 ### Running XGB-WSM
 
 The current XGB-WSM platform runs on preloaded and processed hydroclimate input data, including demand projections from the CSD-WDM.
-This interface provides the user an opportunity to set reservoir reliability, resilience, and vulnerability thresholds (Mountain and Little Dell reservoirs), desired water use units (Acre-Feet, Million Gallons (MG), cubic meters(x10^4)) for out-of-district water requests (Deer Creek Reservoir) and groundwater withdrawall, and selecting the desired hydroclimate scenario (Wet, Average, Dry). 
+This interface provides the user an opportunity to set reservoir reliability, resilience, and vulnerability thresholds (Mountain and Little Dell reservoirs), desired water use units (Acre-Feet, Million Gallons (MG), cubic meters(x10<sup>4</sup>)) for out-of-district water requests (Deer Creek Reservoir) and groundwater withdrawall, and selecting the desired hydroclimate scenario (Wet, Average, Dry). 
 
 ![thresholds_scneario_units](https://user-images.githubusercontent.com/33735397/159972495-f21c839c-169f-4ddf-bd8c-da3fc3c1a4a5.PNG)
 
