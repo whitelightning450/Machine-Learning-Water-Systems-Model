@@ -22,6 +22,7 @@ This model serves as a template for other water systems with or without an exist
 
 ### Brief Salt Lake City water system background
 ![studyArea](https://user-images.githubusercontent.com/33735397/159961402-7a06a9fd-d275-4cb0-bb13-6f6b722a3860.PNG)
+
 **Study Area**: Salt Lake City depends on winter snowpack in the adjacent Wasatch mountains to support surface water supplies, fill the Dell reservoir storage system, and replenish valley aquifers.
 Its mountainous topography, geographical location, and arid climate result in highly skewed April to October water use to counteract seasonally high evapotranspiration for out outdoor landscaping and irrigation.
 
