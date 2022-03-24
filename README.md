@@ -63,7 +63,21 @@ A Log-Pearson Type III analysis indicates the dry year demonstrates a non-exceed
 These three water years establish the foundation of the testing scenarios by defining supply availability with the streamflow quantities at the canyon mouths and the corresponding observed per-capita water use.
 Other system factors such as population, conservation, policy, and initial reservoir levels remain constant between scenarios.
 
-# Using the XGB-WSM
+## Using the XGB-WSM
+The XGB-WSM requires the following dependencies and packages
+
+## Dependencies (versions, environments)
+Python: Version 3.8 or later
+
+### Required packages
+
+|  collections |   numpy     |  seaborm  |
+|:-----------: | :--------:  | :-------: | 
+| collinearity |     os      | sklearn   |
+|     copy     |   pandas    |    time   |
+|   jenkspy    |  pathlib    | warning   |
+|     joblib   |    pickle   |  xgboost  |
+|   matplotlib | progressbar |           |
 
 
 
