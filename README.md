@@ -40,6 +40,7 @@ This water comes at a greater cost, resulting in it being the least prioritized 
 
 
 ![SLC_WS_schematic](https://user-images.githubusercontent.com/33735397/159962157-b7ef6a33-e758-4d9b-924c-a266f17c0b0e.PNG)
+
 **Water System:** Salt Lake City's water system leverages adjacent Wasatch Mountain surface water supplies, small reservoirs (Dell system), groundwater withdrawal, minimal in-system storage, and access to larger U.S. Bureau of Reclamation reservoir systems. 
 
 ### Machine Learning Model Inputs and Training
@@ -86,6 +87,7 @@ The current XGB-WSM platform runs on preloaded and processed hydroclimate input 
 This interface provides the user an opportunity to set reservoir reliability, resilience, and vulnerability thresholds (Mountain and Little Dell reservoirs), desired water use units (Acre-Feet, Million Gallons (MG), cubic meters(x10^4)) for out-of-district water requests (Deer Creek Reservoir) and groundwater withdrawall, and selecting the desired hydroclimate scenario (Wet, Average, Dry). 
 
 ![thresholds_scneario_units](https://user-images.githubusercontent.com/33735397/159972495-f21c839c-169f-4ddf-bd8c-da3fc3c1a4a5.PNG)
+
 **XGB-WSM:** The existing user interface supports reservoir thresholds, desired units, and hydroclimate scenario.
 
 Setting up the XGB-WSM uses the XGB_Model_v3_uncertainty.py module and imports as XGB_Model. 
@@ -96,13 +98,16 @@ During this step, changes observations to True or False depending on the desired
 Choose False if making a forecast or choose True if validating the model and want to evaluate model performance. 
 
 ![DataProcessing](https://user-images.githubusercontent.com/33735397/159974043-529144fc-314f-4b43-88d4-ec65d5f6cd7b.PNG)
+
 **Initiating the model:** Running the model provides the user with updates on data processing, predictions, and comparison with historical observations for a comprehensive reliability, resilience, and vulnerability (RRV) analysis. 
 
 ![Predictions](https://user-images.githubusercontent.com/33735397/159974131-f23caf7d-628a-4d03-a3a3-6ffc39768f06.PNG)
+
 **XGB-WSM Results** The model communicate the reservoir thresholds and key information used to determine system satisfactory and unsatisfactory condtions with respect to historical obervations. 
 For this system, the total volume of groundwater and out-of-district (Deer Creek Reservoir) water requests are key metrics to determine system RRV, which the model prints out for easy identification along with the range in anticipated values. 
 
 ![Mod_Ave_obs_True_Analysis](https://user-images.githubusercontent.com/33735397/159975932-8e7f343b-b7dc-491c-b31c-52b4f53001af.png)
+
 **XGB-WSM Prediction w/Observations** Using average hydroclimate conditions as an example, the model illustrates water system performance for each key component with an April to October hydrograph of use or level.
 The prediction is the blue line with the uncertainty (to a 95% confidence level) surounding this line in the lighter shade. 
 The plots to the right communicate RRV, usign the metrics of reliabiity, vulnerability, and max severity.
@@ -111,6 +116,7 @@ This figure has observations set to True, demonstrated by the parity plot illust
 
 
 ![Mod_Ave_obs_False_Analysis](https://user-images.githubusercontent.com/33735397/159975865-9e5e9f51-bde7-4928-8ac1-8eaed1fb875f.png)
+
 **XGB-WSM Prediction w/o Observations** This figure is for the same average hydroclimate conditions as above but run in forecasting mode without observations. 
 Future development of the XGB-WSM will biuld on this platform to generate predictions for an array of hydrocliate influenced water system conditions.
 
