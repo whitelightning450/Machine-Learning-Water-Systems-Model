@@ -30,7 +30,7 @@ The SLCDPU shares many similarities with western and intermountain water utiliti
 The region's interannual climate variability and seasonality strongly influence winter snowpack accumulation, extent, and duration, functioning as the primary mechanism controlling surface water supplies.
 The region's cold semi-arid (BSk) to cold desert climate (BWk) significantly influences seasonal water use in response to high evapotranspiration during summer months.
 From April to October, outdoor water use approaches 1000 mm to irrigate commercial and residential landscaping.
-While a supply limited region, high seasonal water use places Utah as the 2nd or 3rd highest per-capita water use state depending on the year.
+While a supply limited region, high seasonal water use places Utah as the 2<sup>nd</sup> or 3<sup>rd</sup> highest per-capita water use state depending on the year.
 
 The utility satisfies its demands by sourcing adjacent Wasatch mountain surface water, underlying valley groundwater, and nearby Deer Creek reservoir and Central Utah Project (CUP) out-of-district supplies.
 From the Wasatch mountains, City creek, Parley's creek, Big Cottonwood creek, and Little Cottonwood creek contribute over 60% of the municipality's annual supply.
@@ -85,7 +85,7 @@ Python: Version 3.8 or later
 ### Running XGB-WSM
 
 The current XGB-WSM platform runs on preloaded and processed hydroclimate input data, including demand projections from the CSD-WDM.
-This interface provides the user an opportunity to set reservoir reliability, resilience, and vulnerability thresholds (Mountain and Little Dell reservoirs), desired water use units (Acre-Feet, Million Gallons (MG), cubic meters(x10<sup>4</sup>)) for out-of-district water requests (Deer Creek Reservoir) and groundwater withdrawall, and selecting the desired hydroclimate scenario (Wet, Average, Dry). 
+This interface provides the user an opportunity to set reservoir reliability, resilience, and vulnerability thresholds (Mountain and Little Dell reservoirs), desired water use units (Acre-Feet, Million Gallons (MG), cubic meters(x10<sup>4</sup>  m<sup>3</sup>)) for out-of-district water requests (Deer Creek Reservoir) and groundwater withdrawall, and selecting the desired hydroclimate scenario (Wet, Average, Dry). 
 
 ![thresholds_scneario_units](https://user-images.githubusercontent.com/33735397/159972495-f21c839c-169f-4ddf-bd8c-da3fc3c1a4a5.PNG)
 
