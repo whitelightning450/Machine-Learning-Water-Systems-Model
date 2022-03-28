@@ -2,7 +2,7 @@
 ![ML_WSM_Github](https://user-images.githubusercontent.com/33735397/159956101-71874623-1189-48dd-8774-102a9be4964c.png)
 
 # Machine-Learning-Water-Systems-Model
-![GitHub](https://img.shields.io/github/license/whitelightning450/Machine-Learning-Water-Systems-Model?logo=GitHub&style=plastic)
+![GitHub](https://img.shields.io/github/license/whitelightning450/Machine-Learning-Water-Systems-Model?style=plastic)
 ![GitHub top language](https://img.shields.io/github/languages/top/whitelightning450/Machine-Learning-Water-Systems-Model?logo=Jupyter&style=plastic)
 ![GitHub repo size](https://img.shields.io/github/repo-size/whitelightning450/Machine-Learning-Water-Systems-Model?logo=Github&style=plastic)
 ![GitHub language count](https://img.shields.io/github/languages/count/whitelightning450/Machine-Learning-Water-Systems-Model?style=plastic)
