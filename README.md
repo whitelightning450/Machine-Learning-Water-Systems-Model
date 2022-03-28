@@ -8,6 +8,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/whitelightning450/Machine-Learning-Water-Systems-Model)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/whitelightning450/Machine-Learning-Water-Systems-Model)
 ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/whitelightning450/Machine-Learning-Water-Systems-Model?style=plastic)
+![GitHub branch checks state](https://img.shields.io/github/checks-status/whitelightning450/Machine-Learning-Water-Systems-Model/main)
 
 
 This machine learning workflow demonstrates a framework to function a digital twin of a systems dynamics model for urban water system seasonal water system reliability, resilience, and vulnerability analysis.
