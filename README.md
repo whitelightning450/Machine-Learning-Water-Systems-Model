@@ -78,13 +78,13 @@ Python: Version 3.8 or later
 
 ### Required packages
 
-|  collections |   numpy     |  seaborm  |
+|  collections |   numpy     |  scikit-learn  |
 |:-----------: | :--------:  | :-------: | 
-| collinearity |     os      | sklearn   |
-|     copy     |   pandas    |    time   |
-|   jenkspy    |  pathlib    | warning   |
-|     joblib   |    pickle   |  xgboost  |
-|   matplotlib | progressbar |           |
+| collinearity |     os      |  scipy    |
+|     copy     |   pandas    |    seaborn   |
+|   jenkspy    |  pathlib    | time    |
+|     joblib   |    pickle   |  warning   |
+|   matplotlib | progressbar |     xgboost      |
 
 
 ### Running XGB-WSM
