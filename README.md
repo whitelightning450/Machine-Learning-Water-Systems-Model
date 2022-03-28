@@ -6,6 +6,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/whitelightning450/Machine-Learning-Water-Systems-Model?logo=Jupyter&style=flat-square)
 ![GitHub repo size](https://img.shields.io/github/repo-size/whitelightning450/Machine-Learning-Water-Systems-Model?logo=Github&style=flat-square)
 ![GitHub language count](https://img.shields.io/github/languages/count/whitelightning450/Machine-Learning-Water-Systems-Model)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/whitelightning450/Machine-Learning-Water-Systems-Model)
 
 
 
