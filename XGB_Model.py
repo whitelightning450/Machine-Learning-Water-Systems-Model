@@ -63,7 +63,7 @@ class XGB_model():
         print('Calibration time', round(c_time), 's')
         print('Saving Model')
         #adjust this to match changing models
-        pickle.dump(model, open(self.cwd + M_save_filepath, "wb"))   
+        pickle.dump(model, open(self.cwd.joinpath(M_save_filepath), "wb"))   
 
         self.model_=model
         
@@ -78,9 +78,8 @@ class XGB_model():
     
     
     def XGB_Predict(self, test_feat, test_targ):
-        
         #Make predictions with the model
-        model = pickle.load(open(self.cwd+"/Model_History/V2/XGBoost_"+self.Target+".dat", "rb"))
+        model = pickle.load(open(self.cwd.joinpath("/Model_History/V2/XGBoost_"+self.Target+".dat"), "rb"))
         start_time = time.time()  
         #since the previous timestep is being used, we need to predict this value
         predict = []
@@ -439,7 +438,7 @@ class XGB_Tuning():
             self.Final_FeaturesDF = self.Col_Check_feat[self.Final_Features]
 
         #save features list 
-        pickle.dump(self.Final_Features, open(self.cwd + "/Model_History/V2/"+self.targ+"_features.pkl", "wb")) 
+        pickle.dump(self.Final_Features, open(self.cwd.joinpath("/Model_History/V2/"+self.targ+"_features.pkl"), "wb")) 
 
         print('The final features for ', self.targ, 'are: ')
         print(self.Final_FeaturesDF.columns)
@@ -530,10 +529,10 @@ class XGB_Prediction():
         
         print('Processing data into features/targets for ', self.scenario, ' scenario')
         #Input optimial features from XGBoost_WSM_Tuning.
-        LittleDell_Percent_Full = pickle.load(open("Models/V2/LittleDell_Percent_Full_features.pkl", "rb"))
-        Mtn_Dell_Percent_Full = pickle.load(open("Models/V2/Mtn_Dell_Percent_Full_features.pkl", "rb")) 
-        SLCDPU_GW = pickle.load(open("Models/V2/SLCDPU_GW_features.pkl", "rb"))
-        SLCDPU_DC_Water_Use = pickle.load(open("Models/V2/SLCDPU_DC_Water_Use_features.pkl", "rb"))
+        LittleDell_Percent_Full = pickle.load(open(self.cwd.joinpath("BoostModels/LittleDell_Percent_Full_features.pkl"), "rb"))
+        Mtn_Dell_Percent_Full = pickle.load(open(self.cwd.joinpath("BoostModels/Mtn_Dell_Percent_Full_features.pkl"), "rb")) 
+        SLCDPU_GW = pickle.load(open(self.cwd.joinpath("BoostModels/SLCDPU_GW_features.pkl"), "rb"))
+        SLCDPU_DC_Water_Use = pickle.load(open(self.cwd.joinpath("BoostModels/SLCDPU_DC_Water_Use_features.pkl"), "rb"))
 
 
 
@@ -647,10 +646,10 @@ class XGB_Prediction():
         DC_targ = copy.deepcopy(self.targets[self.DC])
 
         #Make predictions with the model, load model from XGBoost_WSM_Tuning
-        MDell_model = pickle.load(open("Models/V1/XGBoost_"+self.MDell+".dat", "rb"))
-        LDell_model = pickle.load(open("Models/V2/XGBoost_"+self.LDell+".dat", "rb"))
-        GW_model = pickle.load(open("Models/V2/XGBoost_"+self.GW+".dat", "rb"))
-        DC_model = pickle.load(open("Models/V2/XGBoost_"+self.DC+".dat", "rb"))
+        MDell_model = pickle.load(open(self.cwd.joinpath("BoostModels/XGBoost_"+self.MDell+".dat"), "rb"))
+        LDell_model = pickle.load(open(self.cwd.joinpath("BoostModels/XGBoost_"+self.LDell+".dat"), "rb"))
+        GW_model = pickle.load(open(self.cwd.joinpath("BoostModels/XGBoost_"+self.GW+".dat"), "rb"))
+        DC_model = pickle.load(open(self.cwd.joinpath("BoostModels/XGBoost_"+self.DC+".dat"), "rb"))
 
 
 
