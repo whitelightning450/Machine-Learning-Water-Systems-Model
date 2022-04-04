@@ -15,6 +15,11 @@ import numpy as np
 import copy
 from collinearity import SelectNonCollinear
 from sklearn.feature_selection import f_regression 
+from sklearn.metrics import r2_score
+from sklearn.metrics import mean_squared_error
+import hydroeval as he
+
+
 import pandas as pd
 import seaborn as sns
 from sklearn.feature_selection import RFE
@@ -1804,7 +1809,8 @@ class XGB_Prediction():
             
             plt.show()
             
-            
+            #Print Model performanace
+            self.ModelScoring()
             
             
             
@@ -2022,6 +2028,57 @@ class XGB_Prediction():
             #plt.title('Production Simulations', size = labelsize+2)
             fig.savefig(self.cwd+'/Figures/'+self.scenario+'_obs_'+str(self.obs)+ '_Analysis.pdf')
             fig.savefig(self.cwd+'/Figures/'+self.scenario+'_obs_'+str(self.obs)+ '_Analysis.png', dpi =300)
+            
+            
+            
+            
+    def ModelScoring(self):
+        #Calculate RMSE
+        RMSE_LDell = round(mean_squared_error(self.Analysis[self.LDell],self.Analysis[self.LDell_Pred], squared=False),2)
+        RMSE_MDell = round(mean_squared_error(self.Analysis[self.MDell],self.Analysis[self.MDell_Pred], squared=False),2)
+        RMSE_GW = round(mean_squared_error(self.Analysis[self.GW],self.Analysis[self.GW_Pred], squared=False),2)
+        RMSE_DC = round(mean_squared_error(self.Analysis[self.DC],self.Analysis[self.DC_Pred], squared=False),2)
+
+        #Calculate MAPE
+        MAPE_LDell = abs((self.Analysis[self.LDell]-self.Analysis[self.LDell_Pred])/ self.Analysis[self.LDell])*100
+        MAPE_MDell = abs((self.Analysis[self.MDell]-self.Analysis[self.MDell_Pred])/ self.Analysis[self.MDell])*100
+        MAPE_GW = abs((self.Analysis[self.GW]-self.Analysis[self.GW_Pred])/self.Analysis[self.GW])*100
+        MAPE_DC = abs((self.Analysis[self.DC]-self.Analysis[self.DC_Pred])/self.Analysis[self.DC])*100
+
+        MAPE_LDell[MAPE_LDell> 100] = 100
+        MAPE_MDell[MAPE_MDell> 100] = 100
+        MAPE_GW[MAPE_GW> 100] = 100
+        MAPE_DC[MAPE_DC> 100] = 100
+
+        MAPE_LDell= round(np.mean(MAPE_LDell),2)
+        MAPE_MDell= round(np.mean(MAPE_MDell),2)
+        MAPE_GW= round(np.mean(MAPE_GW),2)
+        MAPE_DC= round(np.mean(MAPE_DC),2)
+
+        #Calculate R2
+        R2_LDell = round(r2_score(self.Analysis[self.LDell],self.Analysis[self.LDell_Pred]),2)
+        R2_MDell = round(r2_score(self.Analysis[self.MDell],self.Analysis[self.MDell_Pred]),2)
+        R2_GW = round(r2_score(self.Analysis[self.GW],self.Analysis[self.GW_Pred]),2)
+        R2_DC = round(r2_score(self.Analysis[self.DC],self.Analysis[self.DC_Pred]),2)
+
+        #Calculate NSE
+        nse_LDell = he.evaluator(he.nse, self.Analysis[self.LDell],self.Analysis[self.LDell_Pred])
+        nse_MDell = he.evaluator(he.nse, self.Analysis[self.MDell],self.Analysis[self.MDell_Pred])
+        nse_GW = he.evaluator(he.nse, self.Analysis[self.GW],self.Analysis[self.GW_Pred])
+        nse_DC = he.evaluator(he.nse, self.Analysis[self.DC],self.Analysis[self.DC_Pred])
+        
+        #Calculate KGE
+        KGE_LDell, r_LDell, alpha_LDell, beta_LDell = he.evaluator(he.kge, self.Analysis[self.LDell],self.Analysis[self.LDell_Pred])
+        KGE_MDell, r_MDell, alpha_MDell, beta_MDell = he.evaluator(he.kge, self.Analysis[self.MDell],self.Analysis[self.MDell_Pred])
+        KGE_GW, r_GW, alpha_GW, beta_GW = he.evaluator(he.kge, self.Analysis[self.GW],self.Analysis[self.GW_Pred])
+        KGE_DC, r_DC, alpha_DC, beta_DC = he.evaluator(he.kge, self.Analysis[self.DC],self.Analysis[self.DC_Pred])
+
+
+
+        print('Mountain Dell RMSE: ', RMSE_MDell, '%, MAPE: ', MAPE_MDell, '%, R2: ', R2_MDell, ', NSE: ', round(nse_LDell[0],2), ' KGE: ', round(KGE_LDell[0],2))
+        print('Little Dell RMSE: ', RMSE_LDell, '%, MAPE: ', MAPE_LDell,'%, R2: ', R2_LDell, ', NSE: ', round(nse_MDell[0],2), ' KGE: ', round(KGE_MDell[0],2))
+        print('GW Extraction RMSE: ', RMSE_GW, 'x10^4 m^3, MAPE: ', MAPE_GW,'%, R2: ', R2_GW, ', NSE: ', round(nse_GW[0],2), ' KGE: ', round(KGE_GW[0],2))
+        print('DC Extraction RMSE: ', RMSE_DC, 'x10^4 m^3, MAPE: ', MAPE_DC,'%, R2: ', R2_DC, ', NSE: ', round(nse_DC[0],2), ' KGE: ', round(KGE_DC[0],2))
 
 
 
