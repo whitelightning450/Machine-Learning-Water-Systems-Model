@@ -1516,6 +1516,11 @@ class XGB_Prediction():
         print('Expected April - October volume of Deer Creek water use is ', round(sum(self.Analysis[self.DC_Pred])*self.conversion), self.units, ', range : ', round(sum(self.Analysis[self.DC_Pred_Low])*self.conversion), '-', round(sum(self.Analysis[self.DC_Pred_Hig])*self.conversion), self.units )
         
         
+        if self.obs ==True:
+            print('Observed Groundwater volume is', round(sum(self.Analysis[self.GW]*self.conversion)), self.units)
+            print('Observed Deer Creek volume is', round(sum(self.Analysis[self.DC]*self.conversion)), self.units)
+        
+        
         #Set up the target labels
         #Mountain Dell
         MDell_Hist = 'Hist_Mean_'+ self.MDell
@@ -1678,7 +1683,7 @@ class XGB_Prediction():
             RRV_DC = self.Target_RRV[self.DC]
             RRV_DC = RRV_DC.loc[RRV_DC['Model']=='XGB_WSM'].reset_index()
             
-            
+            print(' ')
             print('Predicted Mountain Dell Reservoir Vulnerability: ', RRV_MDell['Jenks_Vul'][0], ' Observed: ',  RRV_MDell_obs['Jenks_Vul'][0])
             print('Predicted Little Dell Reservoir Vulnerability: ', RRV_LDell['Jenks_Vul'][0], ' Observed: ',  RRV_LDell_obs['Jenks_Vul'][0])
             print('Predicted Groundwater Withdrawal Vulnerability: ', RRV_GW['Jenks_Vul'][0], ' Observed: ',  RRV_GW_obs['Jenks_Vul'][0])
@@ -1750,7 +1755,7 @@ class XGB_Prediction():
             ax[1,0].fill_between(self.Analysis.index.values, self.Analysis[self.LDell_Pred], self.Analysis['LDell_Thresh'], where=self.Analysis[self.LDell_Pred] < self.Analysis['LDell_Thresh'],
                     facecolor='red', alpha=0.2, interpolate=True)
 
-            ax[1,0].axhline(y = self.LDell_Thresh, color = 'red', label = 'Unsatifactory Conditions Threshold')
+            ax[1,0].axhline(y = self.LDell_Thresh, color = 'orange', label = 'Unsatifactory Conditions Threshold')
             ax[1,0].set_xlabel('  ', size = labelsize)
             ax[1,0].set_ylabel('Little Dell Reservoir \n Level (%)', size = labelsize)
             ax[1,0].set_ylim(0,100)
@@ -1809,7 +1814,7 @@ class XGB_Prediction():
      
             ax[2,2].bar(self.components[self.GW].index, self.components[self.GW]['XGB_WSM'], yerr = asymmetric_error_RRV_GW, capsize = 4,
                width = width, align = 'edge', color = 'blue')
-            ax[2,2].bar(self.components[self.GW].index, self.components[self.GW]['SLC_WSM'], yerr = asymmetric_error_RRV_GW, capsize = 4,
+            ax[2,2].bar(self.components[self.GW].index, self.components[self.GW]['SLC_WSM'], capsize = 4,
                width = -width, align = 'edge', color = 'red')
             ax[2,2].set_ylim(0,1)
             ax[2,2].axes.xaxis.set_ticklabels([])
@@ -1956,7 +1961,7 @@ class XGB_Prediction():
             RRV_DC = self.Target_RRV[self.DC]
             RRV_DC = RRV_DC.loc[RRV_DC['Model']=='XGB_WSM'].reset_index()
             
-            
+            print(' ')
             print('Predicted Mountain Dell Reservoir Vulnerability: ', RRV_MDell['Jenks_Vul'][0])
             print('Predicted Little Dell Reservoir Vulnerability: ', RRV_LDell['Jenks_Vul'][0])
             print('Predicted Groundwater Withdrawal Vulnerability: ', RRV_GW['Jenks_Vul'][0])
@@ -2018,7 +2023,7 @@ class XGB_Prediction():
             ax[1,0].fill_between(self.Analysis.index.values, self.Analysis[self.LDell_Pred], self.Analysis['LDell_Thresh'], where=self.Analysis[self.LDell_Pred] < self.Analysis['LDell_Thresh'],
                     facecolor='red', alpha=0.2, interpolate=True)
 
-            ax[1,0].axhline(y = self.LDell_Thresh, color = 'red', label = 'Unsatifactory Conditions Threshold')
+            ax[1,0].axhline(y = self.LDell_Thresh, color = 'orange', label = 'Unsatifactory Conditions Threshold')
             ax[1,0].set_xlabel('  ', size = labelsize)
             ax[1,0].set_ylabel('Little Dell Reservoir \n Level (%)', size = labelsize)
             ax[1,0].set_ylim(0,100)
